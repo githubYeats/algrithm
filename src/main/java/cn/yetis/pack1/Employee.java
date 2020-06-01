@@ -9,5 +9,10 @@ public class Employee {
 
     private String name;
 
-    private String age;
+    private Integer age;
+
+    public Employee(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
 }

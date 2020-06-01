@@ -1,7 +1,13 @@
 package cn.yetis.pack1;
 
 
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ArrayUtils;
+
+import java.lang.reflect.Field;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author fyyang
@@ -10,32 +16,56 @@ import java.util.*;
  */
 public class Main {
     public static void main(String[] args) {
-        List<String> list = new ArrayList<String>();
+        Employee employee1 = new Employee("Jack", 12);
+        Employee employee2 = new Employee("Tom", 13);
+        List<String> filedName = getFiledName(employee1);
+        filedName.forEach(System.out::println);
 
-        List<Object> list1 = Arrays.asList(1, new Employee(), "user");
-        for (Object o : list1) {
-            System.out.println(o);
+    }
+
+    public static List<String> getFiledName(Object obj) {
+        Field[] fields = obj.getClass().getDeclaredFields();
+        List<String> fieldNames = new ArrayList<>();
+        List<String> fieldValues = new ArrayList<>();
+        for (Field field : fields) {
+            fieldNames.add(field.getName());
         }
-
-        List<List<Object>> list2 = Collections.nCopies(1, list1);
-        System.out.println(list2);
-        List<String> list3 = Collections.nCopies(10, "msg");
-        System.out.println(list3);
+        return fieldNames;
+    }
 
 
-        Set<Integer> singleton = Collections.singleton(2);
-        System.out.println(singleton);
+    /**
+     * org.apache.commons.collections4.CollectionUtils
+     */
+    public static void testCollectionUtils() {
+        String[] arrayA = new String[]{"1", "2", "3", "3", "4", "5"};
+        String[] arrayB = new String[]{"3", "4", "4", "5", "6", "7"};
+        List<String> a = Arrays.asList(arrayA);
+        List<String> b = Arrays.asList(arrayB);
+        //并集
+        Collection<String> union = CollectionUtils.union(a, b);
+        //交集
+        Collection<String> intersection = CollectionUtils.intersection(a, b);
+        //交集的补集
+        Collection<String> disjunction = CollectionUtils.disjunction(a, b);
+        //集合相减
+        Collection<String> subtract = CollectionUtils.subtract(a, b);
+        Collections.sort((List<String>) union);
+        Collections.sort((List<String>) intersection);
+        Collections.sort((List<String>) disjunction);
+        Collections.sort((List<String>) subtract);
+        System.out.println("A: " + ArrayUtils.toString(a.toArray()));
+        System.out.println("B: " + ArrayUtils.toString(b.toArray()));
+        System.out.println("--------------------------------------------");
+        System.out.println("Union(A, B): " + ArrayUtils.toString(union.toArray()));
+        System.out.println("Intersection(A, B): " + ArrayUtils.toString(intersection.toArray()));
+        System.out.println("Disjunction(A, B): " + ArrayUtils.toString(disjunction.toArray()));
+        System.out.println("Subtract(A, B): " + ArrayUtils.toString(subtract.toArray()));
 
-        Properties properties = new Properties();
-
-        System.out.println("-----------------------------");
-        BitSet bitSet = new BitSet(1);
-        System.out.println(bitSet.get(0));
-        System.out.println(bitSet.length());
-        System.out.println(bitSet.size());
-
-
-
-
+        System.out.println("--------------------------------------------");
+        String[] arrayC = new String[]{"1", "2", "3", "3", "3", "3", "4", "4", "4", "5"};
+        List<String> c = Arrays.asList(arrayC);
+        Collection<String> disjunctionC = CollectionUtils.disjunction(c, new HashSet<String>(c));
+        System.out.println("*******): " + ArrayUtils.toString(disjunctionC.toArray()));
     }
 }
