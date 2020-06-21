@@ -120,3 +120,15 @@ public class ForkJoinSumCalculator extends RecursiveTask<Long> {
         return new ForkJoinPool().invoke(task);
     }
 }
+
+/*
+    默认的无参数构造函数，这意味着想让线程池使用JVM能够使用的所有处理器。
+    更确切地说，该构造函数将使用 Runtime.availableProcessors() 的返回值来决定线程池使用的线程数。
+
+    请注意 availableProcessors() 方法虽然看起来是处理器，但它实际上返回的是可用内核的数量，包括超线程生成的虚拟内核。
+
+    public ForkJoinPool() {
+        this(Math.min(MAX_CAP, Runtime.getRuntime().availableProcessors()),
+             defaultForkJoinWorkerThreadFactory, null, false);
+    }
+ */
