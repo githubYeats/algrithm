@@ -12,5 +12,5 @@ public interface ApplePredicate {
      * @param apple 苹果对象
      * @return 是否满足选择条件
      */
-    boolean test(Apple apple);
+    boolean chooseApple(Apple apple);
 }

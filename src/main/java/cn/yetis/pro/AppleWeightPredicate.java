@@ -10,7 +10,8 @@ import java.math.BigDecimal;
  */
 public class AppleWeightPredicate implements ApplePredicate {
 
-    public boolean test(Apple apple) {
+    @Override
+    public boolean chooseApple(Apple apple) {
         return BigDecimalUtils.greaterThan(apple.getWeight(), BigDecimal.valueOf(150));
     }
 }

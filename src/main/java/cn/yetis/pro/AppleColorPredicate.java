@@ -12,7 +12,8 @@ public class AppleColorPredicate implements ApplePredicate {
      * @param apple 苹果对象
      * @return 是否是红苹果
      */
-    public boolean test(Apple apple) {
+    @Override
+    public boolean chooseApple(Apple apple) {
         return "red".equals(apple.getColour());
     }
 }

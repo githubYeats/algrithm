@@ -16,10 +16,11 @@ import java.util.stream.Stream;
  */
 public class Main {
     public static void main(String[] args) {
-        Employee employee1 = new Employee("Jack", 12);
+        testCollectionUtils();
+       /* Employee employee1 = new Employee("Jack", 12);
         Employee employee2 = new Employee("Tom", 13);
         List<String> filedName = getFiledName(employee1);
-        filedName.forEach(System.out::println);
+        filedName.forEach(System.out::println);*/
 
     }
 
