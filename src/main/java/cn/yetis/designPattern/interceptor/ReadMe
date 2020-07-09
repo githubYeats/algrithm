@@ -1,0 +1,13 @@
+拦截器模式
+------------------
+主要包含以下角色：
+1.TargetInvocation
+    包含一组 Interceptor 和一个 Target 对象，确保在 Target 处理请求前后，按照定义的顺序调用 Interceptor 做前置和后置处理。
+2.Target
+    处理请求的目标接口
+3.TargetImpl
+    Target 接口的实现类
+4.Interceptor
+    拦截器接口
+5.InterceptorImpl
+    拦截器接口实现类
