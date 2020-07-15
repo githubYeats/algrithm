@@ -9,6 +9,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.time.ZoneId;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author fyyang
@@ -39,6 +40,19 @@ public class Main {
         bb.removeAll(aa);
         System.out.println("最终结果：" + bb);
 
+
+        System.out.println("=====================================");
+        // 比的是"二级毕业要求编号"，求交集: 数据源 vs 当前的
+        Integer[] aaa = new Integer[]{6, 3, 9, 3, 2, 4, 5, 7};
+        Integer[] bbb = new Integer[]{5, 8, 6, 2, 1, 9};
+        List<Integer> originalIloList = Arrays.asList(aaa);
+        List<Integer> targetIloList = Arrays.asList(bbb);
+        ArrayList<Integer> retainOriginalStrings = originalIloList.stream()
+                .collect(Collectors.toCollection(ArrayList::new));
+        ArrayList<Integer> retainTargetStrings = targetIloList.stream()
+                .collect(Collectors.toCollection(ArrayList::new));
+        retainTargetStrings.retainAll(retainOriginalStrings);
+        System.out.println(retainTargetStrings);
 
     }
 
