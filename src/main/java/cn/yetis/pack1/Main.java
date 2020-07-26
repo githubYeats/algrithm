@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class Main {
     public static void main(String[] args) {
         // 注意：一定要使用创建对象的格式创建数组
-        Integer[] a = new Integer[]{6, 3, 9, 3, 2, 4, 5, 7};
+        Integer[] a = new Integer[]{6, 6, 3, 9, 3, 2, 4, 5, 7};
         Integer[] b = new Integer[]{5, 8, 6, 2, 1, 9};
         List _a = Arrays.asList(a);
         List _b = Arrays.asList(b);
@@ -42,17 +42,26 @@ public class Main {
 
 
         System.out.println("=====================================");
-        // 比的是"二级毕业要求编号"，求交集: 数据源 vs 当前的
-        Integer[] aaa = new Integer[]{6, 3, 9, 3, 2, 4, 5, 7};
+        // 求交集
+        Integer[] aaa = new Integer[]{6, 3, 9, 9, 3, 2, 4, 5, 7};
         Integer[] bbb = new Integer[]{5, 8, 6, 2, 1, 9};
-        List<Integer> originalIloList = Arrays.asList(aaa);
-        List<Integer> targetIloList = Arrays.asList(bbb);
-        ArrayList<Integer> retainOriginalStrings = originalIloList.stream()
+        List<Integer> retainAAA = Arrays.asList(aaa);
+        List<Integer> retainBBB = Arrays.asList(bbb);
+        ArrayList<Integer> r_AAA = retainAAA.stream()
                 .collect(Collectors.toCollection(ArrayList::new));
-        ArrayList<Integer> retainTargetStrings = targetIloList.stream()
+        ArrayList<Integer> r_BBB = retainBBB.stream()
                 .collect(Collectors.toCollection(ArrayList::new));
-        retainTargetStrings.retainAll(retainOriginalStrings);
-        System.out.println(retainTargetStrings);
+
+        r_BBB.retainAll(r_AAA);
+        System.out.println(r_BBB);
+        System.out.println("=====================================");
+
+        r_AAA.retainAll(r_BBB);
+        System.out.println(r_AAA);
+        System.out.println("=====================================");
+        retainAAA.retainAll(retainBBB);
+        System.out.println(retainAAA);
+
 
     }
 
