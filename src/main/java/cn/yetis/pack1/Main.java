@@ -1,9 +1,6 @@
 package cn.yetis.pack1;
 
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @author fyyang
  * @date
@@ -11,15 +8,19 @@ import java.util.Map;
  */
 public class Main {
     public static void main(String[] args) {
-        // 空 map
-        Map<String, String> emptyMap = new HashMap<>(0);
-        String s = emptyMap.get("1");
-        System.out.println(s);
+        Integer i = null;
+        if (i.compareTo(1) >= 0) { // java.lang.NullPointerException
+            System.out.println("success");
+        } else {
+            System.out.println("false");
+        }
 
-        // 空对象
-        Employee employee = new Employee();
-        String name = employee.getName();
-        System.out.println(name);
+        Integer i1 = 1;
+        if (i1.compareTo(null) >= 0) { // java.lang.NullPointerException
+            System.out.println("success");
+        } else {
+            System.out.println("false");
+        }
     }
 
 }
