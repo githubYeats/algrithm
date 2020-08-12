@@ -1,6 +1,8 @@
 package cn.yetis.pack1;
 
 
+import java.util.Arrays;
+
 /**
  * @author fyyang
  * @date
@@ -8,19 +10,31 @@ package cn.yetis.pack1;
  */
 public class Main {
     public static void main(String[] args) {
-        Integer i = null;
-        if (i.compareTo(1) >= 0) { // java.lang.NullPointerException
-            System.out.println("success");
-        } else {
-            System.out.println("false");
+        char arr[] = new char[52];
+        int i;
+        for (i = 0; i < 52; i++) {
+            if (i < 26) {
+                arr[i] = (char) ('A' + i);
+            } else {
+                arr[i] = (char) ('a' + (i - 26));
+            }
         }
 
-        Integer i1 = 1;
-        if (i1.compareTo(null) >= 0) { // java.lang.NullPointerException
-            System.out.println("success");
-        } else {
-            System.out.println("false");
+        int[] number = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+//        for (char c : arr) {
+//            for (int j : number) {
+//                System.out.println(c + String.valueOf(j));
+//            }
+//        }
+
+        for (int j : number) {
+            for (char c : arr) {
+                System.out.println(String.valueOf(j) + c);
+            }
         }
+
+
     }
 
 }
