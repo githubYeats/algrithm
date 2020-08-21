@@ -8,7 +8,7 @@ package cn.yetis.pack1;
  */
 public class Main {
     public static void main(String[] args) {
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10000; i++) {
             System.out.println(i + "==>" + getChineseOrder(i));
         }
         System.out.println(getChineseOrder(99999));
@@ -17,13 +17,17 @@ public class Main {
 
     /**
      * 根据所给数字，获取对应的中文序号
+     * <p>
+     * 若需要1000以上，需在当前情况下，再处理两个零相连的情况，如：1001==>一千零零一。
+     * 数字越大，需要处理的特殊情况越多，中文序号，"一千"应该够用了。
+     * </p>
      *
-     * @param i 数字，要求的范围：[0, 100000]
+     * @param i 数字，要求的范围：[0, 1000]
      * @return 中文序号
      */
     private static String getChineseOrder(int i) {
-        if (i < 0 || i > 99999) {
-            throw new IllegalArgumentException("数字超出范围，需在[0, 99999]之内！");
+        if (i < 0 || i > 999) {
+            throw new IllegalArgumentException("数字超出范围，需在[0, 999]之内！");
         }
         String str = String.valueOf(i);
         String[] s1 = {"零", "一", "二", "三", "四", "五", "六", "七", "八", "九"};
