@@ -37,7 +37,7 @@ public class Inventory {
             // serialNumber、price两者不判断了，因为它们都是唯一的。  price假设也是唯一的。
 
             BuilderEnum builder = searchGuitar.getBuilder();
-            if ((!"".equals(builder.name())) && (builder.equals(guitar.getBuilder()))) {
+            if (builder.equals(guitar.getBuilder())) {
                 return guitar;
             }
 
@@ -47,17 +47,17 @@ public class Inventory {
             }
 
             TypeEnum type = searchGuitar.getType();
-            if ((!"".equals(type.name())) && (!type.equals(guitar.getType()))) {
+            if (type.equals(guitar.getType())) {
                 return guitar;
             }
 
             WoodEnum backWood = searchGuitar.getBackWood();
-            if ((!"".equals(backWood.name())) && (!backWood.equals(guitar.getBackWood()))) {
+            if (backWood.equals(guitar.getBackWood())) {
                 return guitar;
             }
 
             WoodEnum topWood = searchGuitar.getTopWood();
-            if ((!"".equals(topWood.name())) && (!topWood.equals(guitar.getTopWood()))) {
+            if (topWood.equals(guitar.getTopWood())) {
                 return guitar;
             }
         }
