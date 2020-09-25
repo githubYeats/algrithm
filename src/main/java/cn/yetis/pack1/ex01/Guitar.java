@@ -8,10 +8,13 @@ import lombok.Data;
  */
 @Data
 public class Guitar {
-    private String serialNumber, builder, model, type, backWood, topWood;
+    private String serialNumber, model;
+    BuilderEnum builder;
+    TypeEnum type;
+    WoodEnum backWood, topWood;
     private double price;
 
-    public Guitar(String serialNumber, String builder, String model, String type, String backWood, String topWood, double price) {
+    public Guitar(String serialNumber, BuilderEnum builder, String model, TypeEnum type, WoodEnum backWood, WoodEnum topWood, double price) {
         this.serialNumber = serialNumber;
         this.builder = builder;
         this.model = model;

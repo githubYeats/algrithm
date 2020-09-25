@@ -1,8 +1,7 @@
 package cn.yetis.pack1;
 
 
-import cn.yetis.pack1.ex01.Guitar;
-import cn.yetis.pack1.ex01.Inventory;
+import cn.yetis.pack1.ex01.*;
 
 /**
  * @author fyyang
@@ -15,21 +14,22 @@ public class Main {
         Inventory inventory = new Inventory();
         initializeInventory(inventory);
 
-        Guitar whatErinLikes = new Guitar("001", "Stratocastor",
-                "fender", "electric", "Alder", "Alder", 100);
+        Guitar whatErinLikes = new Guitar("001", BuilderEnum.FENDER,
+                "Stratocastor", TypeEnum.ELECTRIC, WoodEnum.INDIAN_ROSEWOOD,
+                WoodEnum.BRAZILIAN_ROSEWOOD, 100);
 
         Guitar guitar = inventory.search(whatErinLikes);
         if (null != guitar) {
             System.out.println(guitar);
-        }else {
+        } else {
             System.out.println("Sorry, Erin, we have nothing for you.");
         }
 
     }
 
-    private static void initializeInventory(Inventory inventory){
+    private static void initializeInventory(Inventory inventory) {
         // add guitars to the inventory
-        inventory.addGuitar("001", "Stratocastor",
-                "fender", "electric", "Alder", "Alder", 100);
+        inventory.addGuitar("001", BuilderEnum.FENDER,
+                "Stratocastor", TypeEnum.ELECTRIC, WoodEnum.INDIAN_ROSEWOOD, WoodEnum.BRAZILIAN_ROSEWOOD, 100);
     }
 }

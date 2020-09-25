@@ -17,7 +17,8 @@ public class Inventory {
         this.guitars = new LinkedList<>();
     }
 
-    public void addGuitar(String serialNumber, String builder, String model, String type, String backWood, String topWood, double price) {
+    public void addGuitar(String serialNumber, BuilderEnum builder, String model,
+                          TypeEnum type, WoodEnum backWood, WoodEnum topWood, double price) {
         Guitar guitar = new Guitar(serialNumber, builder, model, type, backWood, topWood, price);
         guitars.add(guitar);
     }
@@ -35,29 +36,29 @@ public class Inventory {
         for (Guitar guitar : guitars) {
             // serialNumber、price两者不判断了，因为它们都是唯一的。  price假设也是唯一的。
 
-            String builder = searchGuitar.getBuilder();
-            if ((!"".equals(builder)) && (!builder.equals(guitar.getBuilder()))) {
-                continue;
+            BuilderEnum builder = searchGuitar.getBuilder();
+            if ((!"".equals(builder.name())) && (builder.equals(guitar.getBuilder()))) {
+                return guitar;
             }
 
             String model = searchGuitar.getModel();
             if ((!"".equals(model)) && (!model.equals(guitar.getModel()))) {
-                continue;
+                return guitar;
             }
 
-            String type = searchGuitar.getType();
-            if ((!"".equals(type)) && (!type.equals(guitar.getType()))) {
-                continue;
+            TypeEnum type = searchGuitar.getType();
+            if ((!"".equals(type.name())) && (!type.equals(guitar.getType()))) {
+                return guitar;
             }
 
-            String backWood = searchGuitar.getBackWood();
-            if ((!"".equals(backWood)) && (!backWood.equals(guitar.getBackWood()))) {
-                continue;
+            WoodEnum backWood = searchGuitar.getBackWood();
+            if ((!"".equals(backWood.name())) && (!backWood.equals(guitar.getBackWood()))) {
+                return guitar;
             }
 
-            String topWood = searchGuitar.getTopWood();
-            if ((!"".equals(topWood)) && (!topWood.equals(guitar.getTopWood()))) {
-                continue;
+            WoodEnum topWood = searchGuitar.getTopWood();
+            if ((!"".equals(topWood.name())) && (!topWood.equals(guitar.getTopWood()))) {
+                return guitar;
             }
         }
         return null;
