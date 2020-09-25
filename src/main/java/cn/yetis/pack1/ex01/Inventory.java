@@ -2,6 +2,7 @@ package cn.yetis.pack1.ex01;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,36 +33,33 @@ public class Inventory {
         return null;
     }
 
-    public Guitar search(Guitar searchGuitar) {
+    public List<Guitar> search(Guitar searchGuitar) {
+        List<Guitar> matchedGuitars = new ArrayList<>();
         for (Guitar guitar : guitars) {
             // serialNumber、price两者不判断了，因为它们都是唯一的。  price假设也是唯一的。
 
-            BuilderEnum builder = searchGuitar.getBuilder();
-            if (builder.equals(guitar.getBuilder())) {
-                return guitar;
-            }
-
             String model = searchGuitar.getModel();
             if ((!"".equals(model)) && (!model.equals(guitar.getModel()))) {
-                return guitar;
+                continue;
             }
 
-            TypeEnum type = searchGuitar.getType();
-            if (type.equals(guitar.getType())) {
-                return guitar;
+            if (!searchGuitar.getBuilder().equals(guitar.getBuilder())) {
+                continue;
+            }
+            if (!searchGuitar.getType().equals(guitar.getType())) {
+                continue;
+            }
+            if (!searchGuitar.getBackWood().equals(guitar.getBackWood())) {
+                continue;
+            }
+            if (!searchGuitar.getTopWood().equals(guitar.getTopWood())) {
+                continue;
             }
 
-            WoodEnum backWood = searchGuitar.getBackWood();
-            if (backWood.equals(guitar.getBackWood())) {
-                return guitar;
-            }
-
-            WoodEnum topWood = searchGuitar.getTopWood();
-            if (topWood.equals(guitar.getTopWood())) {
-                return guitar;
-            }
+            // 满足其中一项搜索条件，即添加到搜索结果中。
+            matchedGuitars.add(guitar);
         }
-        return null;
+        return matchedGuitars;
     }
 
 }

@@ -3,6 +3,8 @@ package cn.yetis.pack1;
 
 import cn.yetis.pack1.ex01.*;
 
+import java.util.List;
+
 /**
  * @author fyyang
  * @date
@@ -18,9 +20,9 @@ public class Main {
                 "Stratocastor", TypeEnum.ELECTRIC, WoodEnum.INDIAN_ROSEWOOD,
                 WoodEnum.BRAZILIAN_ROSEWOOD, 100);
 
-        Guitar guitar = inventory.search(whatErinLikes);
-        if (null != guitar) {
-            System.out.println(guitar);
+        List<Guitar> matchedGuitars = inventory.search(whatErinLikes);
+        if (!matchedGuitars.isEmpty()) {
+            System.out.println(matchedGuitars);
         } else {
             System.out.println("Sorry, Erin, we have nothing for you.");
         }
@@ -28,8 +30,11 @@ public class Main {
     }
 
     private static void initializeInventory(Inventory inventory) {
-        // add guitars to the inventory
+        // add guitars to the inventory: more than one guitar
         inventory.addGuitar("001", BuilderEnum.FENDER,
                 "Stratocastor", TypeEnum.ELECTRIC, WoodEnum.INDIAN_ROSEWOOD, WoodEnum.BRAZILIAN_ROSEWOOD, 100);
+
+        inventory.addGuitar("002", BuilderEnum.FENDER,
+                "Stratocastor", TypeEnum.ELECTRIC, WoodEnum.INDIAN_ROSEWOOD, WoodEnum.BRAZILIAN_ROSEWOOD, 200);
     }
 }
