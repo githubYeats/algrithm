@@ -16,11 +16,11 @@ public class Main {
         Inventory inventory = new Inventory();
         initializeInventory(inventory);
 
-        Guitar whatErinLikes = new Guitar("001", BuilderEnum.FENDER,
-                "Stratocastor", TypeEnum.ELECTRIC, WoodEnum.INDIAN_ROSEWOOD,
-                WoodEnum.BRAZILIAN_ROSEWOOD, 100);
+        GuitarSpec spec = new GuitarSpec("Stratocastor", BuilderEnum.FENDER,
+                TypeEnum.ELECTRIC, WoodEnum.INDIAN_ROSEWOOD,
+                WoodEnum.BRAZILIAN_ROSEWOOD);
 
-        List<Guitar> matchedGuitars = inventory.search(whatErinLikes);
+        List<Guitar> matchedGuitars = inventory.search(spec);
         if (!matchedGuitars.isEmpty()) {
             System.out.println(matchedGuitars);
         } else {
@@ -31,10 +31,10 @@ public class Main {
 
     private static void initializeInventory(Inventory inventory) {
         // add guitars to the inventory: more than one guitar
-        inventory.addGuitar("001", BuilderEnum.FENDER,
-                "Stratocastor", TypeEnum.ELECTRIC, WoodEnum.INDIAN_ROSEWOOD, WoodEnum.BRAZILIAN_ROSEWOOD, 100);
-
-        inventory.addGuitar("002", BuilderEnum.FENDER,
-                "Stratocastor", TypeEnum.ELECTRIC, WoodEnum.INDIAN_ROSEWOOD, WoodEnum.BRAZILIAN_ROSEWOOD, 200);
+        GuitarSpec spec = new GuitarSpec("Stratocastor", BuilderEnum.FENDER,
+                TypeEnum.ELECTRIC, WoodEnum.INDIAN_ROSEWOOD,
+                WoodEnum.BRAZILIAN_ROSEWOOD);
+        inventory.addGuitar("001", spec, 100);
+        inventory.addGuitar("002", spec, 200);
     }
 }

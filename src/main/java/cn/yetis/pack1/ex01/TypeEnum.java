@@ -9,9 +9,13 @@ package cn.yetis.pack1.ex01;
 public enum TypeEnum {
 
     /**
-     * 类型
+     * 原声吉他
      */
     ACOUSTIC,
+
+    /**
+     * 电吉他
+     */
     ELECTRIC;
 
     @Override

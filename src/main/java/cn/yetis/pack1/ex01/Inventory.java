@@ -18,9 +18,8 @@ public class Inventory {
         this.guitars = new LinkedList<>();
     }
 
-    public void addGuitar(String serialNumber, BuilderEnum builder, String model,
-                          TypeEnum type, WoodEnum backWood, WoodEnum topWood, double price) {
-        Guitar guitar = new Guitar(serialNumber, builder, model, type, backWood, topWood, price);
+    public void addGuitar(String serialNumber, GuitarSpec guitarSpec, double price) {
+        Guitar guitar = new Guitar(serialNumber, guitarSpec, price);
         guitars.add(guitar);
     }
 
@@ -33,26 +32,26 @@ public class Inventory {
         return null;
     }
 
-    public List<Guitar> search(Guitar searchGuitar) {
+    public List<Guitar> search(GuitarSpec spec) {
         List<Guitar> matchedGuitars = new ArrayList<>();
         for (Guitar guitar : guitars) {
             // serialNumber、price两者不判断了，因为它们都是唯一的。  price假设也是唯一的。
 
-            String model = searchGuitar.getModel();
-            if ((!"".equals(model)) && (!model.equals(guitar.getModel()))) {
+            String model = spec.getModel();
+            if ((!"".equals(model)) && (!model.equals(guitar.getGuitarSpec().getModel()))) {
                 continue;
             }
 
-            if (!searchGuitar.getBuilder().equals(guitar.getBuilder())) {
+            if (!spec.getBuilder().equals(guitar.getGuitarSpec().getBuilder())) {
                 continue;
             }
-            if (!searchGuitar.getType().equals(guitar.getType())) {
+            if (!spec.getType().equals(guitar.getGuitarSpec().getType())) {
                 continue;
             }
-            if (!searchGuitar.getBackWood().equals(guitar.getBackWood())) {
+            if (!spec.getBackWood().equals(guitar.getGuitarSpec().getBackWood())) {
                 continue;
             }
-            if (!searchGuitar.getTopWood().equals(guitar.getTopWood())) {
+            if (!spec.getTopWood().equals(guitar.getGuitarSpec().getTopWood())) {
                 continue;
             }
 

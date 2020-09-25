@@ -8,32 +8,33 @@ import lombok.Data;
  */
 @Data
 public class Guitar {
-    private String serialNumber, model;
-    BuilderEnum builder;
-    TypeEnum type;
-    WoodEnum backWood, topWood;
+    /**
+     * 序列号
+     */
+    private String serialNumber;
+
+    /**
+     * 价格
+     */
     private double price;
 
-    public Guitar(String serialNumber, BuilderEnum builder, String model, TypeEnum type, WoodEnum backWood, WoodEnum topWood, double price) {
+    /**
+     * 吉他规格
+     */
+    private GuitarSpec guitarSpec;
+
+    public Guitar(String serialNumber, GuitarSpec guitarSpec, double price) {
         this.serialNumber = serialNumber;
-        this.builder = builder;
-        this.model = model;
-        this.type = type;
-        this.backWood = backWood;
-        this.topWood = topWood;
         this.price = price;
+        this.guitarSpec = guitarSpec;
     }
 
     @Override
     public String toString() {
         return "Guitar{" +
                 "serialNumber='" + serialNumber + '\'' +
-                ", builder='" + builder + '\'' +
-                ", model='" + model + '\'' +
-                ", type='" + type + '\'' +
-                ", backWood='" + backWood + '\'' +
-                ", topWood='" + topWood + '\'' +
                 ", price=" + price +
+                ", guitarSpec=" + guitarSpec +
                 '}';
     }
 }
