@@ -32,35 +32,15 @@ public class Inventory {
         return null;
     }
 
-    public List<Guitar> search(GuitarSpec spec) {
+    public List<Guitar> search(GuitarSpec searchSpec) {
         List<Guitar> matchedGuitars = new ArrayList<>();
         for (Guitar guitar : guitars) {
             // serialNumber、price两者不判断了，因为它们都是唯一的。  price假设也是唯一的。
-
-            GuitarSpec guitarSpec = guitar.getGuitarSpec();
-
-            String model = spec.getModel();
-            if ((!"".equals(model)) && (!model.equals(guitarSpec.getModel()))) {
-                continue;
+            if (guitar.getGuitarSpec().matches(searchSpec)) {
+                // 满足其中一项搜索条件，即添加到搜索结果中。
+                matchedGuitars.add(guitar);
             }
-
-            if (!spec.getBuilder().equals(guitarSpec.getBuilder())) {
-                continue;
-            }
-            if (!spec.getType().equals(guitarSpec.getType())) {
-                continue;
-            }
-            if (!spec.getBackWood().equals(guitarSpec.getBackWood())) {
-                continue;
-            }
-            if (!spec.getTopWood().equals(guitarSpec.getTopWood())) {
-                continue;
-            }
-
-            // 满足其中一项搜索条件，即添加到搜索结果中。
-            matchedGuitars.add(guitar);
         }
         return matchedGuitars;
     }
-
 }

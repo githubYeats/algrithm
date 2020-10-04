@@ -19,7 +19,7 @@ public enum BuilderEnum {
     public String toString() {
         switch (this) {
             case FENDER:
-                return "fender";
+                return "Fender";
             case MARTIN:
                 return "Martin";
             case GIBSON:

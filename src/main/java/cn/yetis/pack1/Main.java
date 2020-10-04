@@ -18,7 +18,7 @@ public class Main {
 
         GuitarSpec spec = new GuitarSpec("Stratocastor", BuilderEnum.FENDER,
                 TypeEnum.ELECTRIC, WoodEnum.INDIAN_ROSEWOOD,
-                WoodEnum.BRAZILIAN_ROSEWOOD);
+                WoodEnum.BRAZILIAN_ROSEWOOD, 7L);
 
         List<Guitar> matchedGuitars = inventory.search(spec);
         if (!matchedGuitars.isEmpty()) {
@@ -33,7 +33,7 @@ public class Main {
         // add guitars to the inventory: more than one guitar
         GuitarSpec spec = new GuitarSpec("Stratocastor", BuilderEnum.FENDER,
                 TypeEnum.ELECTRIC, WoodEnum.INDIAN_ROSEWOOD,
-                WoodEnum.BRAZILIAN_ROSEWOOD);
+                WoodEnum.BRAZILIAN_ROSEWOOD, 8L);
         inventory.addGuitar("001", spec, 100);
         inventory.addGuitar("002", spec, 200);
     }

@@ -2,6 +2,9 @@ package cn.yetis.pack1.ex01;
 
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 吉他规格类
  * <p>
@@ -40,12 +43,38 @@ public class GuitarSpec {
      */
     WoodEnum topWood;
 
-    public GuitarSpec(String model, BuilderEnum builder, TypeEnum type, WoodEnum backWood, WoodEnum topWood) {
+    /**
+     * 吉他弦数
+     */
+    private Long numStrings;
+
+    public GuitarSpec(String model, BuilderEnum builder, TypeEnum type,
+                      WoodEnum backWood, WoodEnum topWood, Long numStrings) {
         this.model = model;
         this.builder = builder;
         this.type = type;
         this.backWood = backWood;
         this.topWood = topWood;
+        this.numStrings = numStrings;
+    }
+
+    public boolean matches(GuitarSpec otherSpec) {
+        if (model.equals(otherSpec.getModel())) {
+            return true;
+        }
+        if (builder == otherSpec.getBuilder()) {
+            return true;
+        }
+        if (type == otherSpec.getType()) {
+            return true;
+        }
+        if (backWood == otherSpec.getBackWood()) {
+            return true;
+        }
+        if (topWood == otherSpec.getTopWood()) {
+            return true;
+        }
+        return numStrings.equals(otherSpec.getNumStrings());
     }
 
     @Override
