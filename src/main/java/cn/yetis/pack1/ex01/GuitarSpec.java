@@ -2,9 +2,6 @@ package cn.yetis.pack1.ex01;
 
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 吉他规格类
  * <p>
