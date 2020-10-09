@@ -1,4 +1,4 @@
-package cn.yetis.pack1;
+package cn.yetis.pack1.ex01;
 
 
 import cn.yetis.pack1.ex01.*;
@@ -10,7 +10,7 @@ import java.util.List;
  * @date
  * @since v1.0.0
  */
-public class Main {
+public class Main1 {
 
     public static void main(String[] args) {
         Inventory inventory = new Inventory();

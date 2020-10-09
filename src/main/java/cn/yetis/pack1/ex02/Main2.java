@@ -11,11 +11,13 @@ public class Main2 {
         // Fido, name of the dog.
         System.out.println("Fido barks to go outside...");
         remote.pressButton();
+
         System.out.println("Fido has gone outside...");
-        remote.pressButton();
+
         System.out.println("Fido's all done...");
-        remote.pressButton();
+
         System.out.println("Fido's back inside...");
-        remote.pressButton();
+
+        System.out.println("The dog door will be closed in 5 seconds");
     }
 }
