@@ -16,6 +16,15 @@ public class Main2 {
 
         System.out.println("Fido's all done...");
 
+        // Fido 一直在外面没回来
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // 再回来时，再为Fido开门
+        remote.pressButton();
         System.out.println("Fido's back inside...");
 
         System.out.println("The dog door will be closed in 5 seconds");
